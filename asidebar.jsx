@@ -36,6 +36,7 @@ export default function Asidebar({ onClick, isOpen }) {
         style={{
           padding: "0.25rem",
           //   border: "4px solid #000",
+          display: isSmallScreen ? "block" : "none",
           borderRadius: "9999px",
           backgroundColor: isOpen ? "#fb7185" : "transparent",
           cursor: "pointer",
