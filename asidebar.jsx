@@ -1,42 +1,22 @@
+"use client";
+
 import WidgetsRoundedIcon from "@mui/icons-material/WidgetsRounded";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LockOpenRoundedIcon from "@mui/icons-material/LockOpenRounded";
 import HowToRegRoundedIcon from "@mui/icons-material/HowToRegRounded";
 import ReceiptIcon from "@mui/icons-material/Receipt";
-import { useRouter } from "next/router";
-import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Asidebar({ onClick, isOpen }) {
   const router = useRouter();
 
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
-
-  useEffect(() => {
-    // Check the screen size only on the client-side
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 768);
-    };
-
-    // Add the event listener on the first render
-    window.addEventListener("resize", handleResize);
-
-    // Clean up the event listener on component unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <>
       <div
-        // className={`p-1 border-4 border-solid rounded-full ${
-        //   isOpen ? "bg-rose-500" : ""
-        // }`}
+        className="flex lg:hidden items-center"
         style={{
           padding: "0.25rem",
-          //   border: "4px solid #000",
-          display: isSmallScreen ? "block" : "none",
           borderRadius: "9999px",
           backgroundColor: isOpen ? "#fb7185" : "transparent",
           cursor: "pointer",
@@ -48,7 +28,6 @@ export default function Asidebar({ onClick, isOpen }) {
           alt="hamburger-menu"
           className="w-8 brightness-0 invert"
           style={{
-            display: isSmallScreen ? "block" : "none",
             margin: "auto",
             maxWidth: "100%",
             filter: "brightness(0) invert(1)",
@@ -73,7 +52,7 @@ export default function Asidebar({ onClick, isOpen }) {
           <li
             className="flex items-center justify-center space-x-6 hover:underline cursor-pointer h-[10vh] hover:bg-orange-500"
             style={{ borderBottom: "3px solid #fff" }}
-            onClick={() => router.push("../account/login")}
+            onClick={() => router.push("../login")}
           >
             <LockOpenRoundedIcon className="text-white" />
             <span className="ml-2">登錄</span>
@@ -81,7 +60,7 @@ export default function Asidebar({ onClick, isOpen }) {
           <li
             className="flex items-center justify-center space-x-6 hover:underline cursor-pointer h-[10vh] hover:bg-orange-500"
             style={{ borderBottom: "3px solid #fff" }}
-            onClick={() => router.push("../account/register")}
+            onClick={() => router.push("../register")}
           >
             <HowToRegRoundedIcon className="text-white" />
             <span className="ml-2">註冊</span>
@@ -89,7 +68,7 @@ export default function Asidebar({ onClick, isOpen }) {
           <li
             className="flex items-center justify-center space-x-6 hover:underline cursor-pointer h-[10vh] hover:bg-orange-500"
             style={{ borderBottom: "3px solid #fff" }}
-            onClick={() => router.push("../checkout/cart")}
+            onClick={() => router.push("../shoppingcart")}
           >
             <ShoppingCartIcon className="text-white" />
             <span className="ml-2">購物車</span>
@@ -97,7 +76,7 @@ export default function Asidebar({ onClick, isOpen }) {
           <li
             className="flex items-center justify-center space-x-6 hover:underline cursor-pointer h-[10vh] hover:bg-orange-500"
             style={{ borderBottom: "3px solid #fff" }}
-            onClick={() => router.push("../checkout/orders")}
+            onClick={() => router.push("../orders")}
           >
             <ReceiptIcon className="text-white" />
             <span className="ml-2">訂單</span>

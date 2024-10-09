@@ -1,33 +1,24 @@
+"use client";
+
 import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Asidebar from "./asidebar";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-export default function Header({ onClick, isOpen }) {
+export default function Header() {
   const router = useRouter();
 
-  const [isLargeScreen, setIsLargeScreen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    // Check the screen size only on the client-side
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth > 768);
-    };
-
-    // Add the event listener on the first render
-    window.addEventListener("resize", handleResize);
-
-    // Clean up the event listener on component unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
       <AppBar
-        className="fixed z-50 top-0 border-orange-500 border-solid border-t-4 max-w-full truncate hover:bg-sky-500"
+        className="fixed z-50 top-0 border-orange-500 border-solid border-t-4 max-w-full truncate hover:bg-sky-500 flex justify-center"
         style={{ minHeight: "10vh" }}
       >
         <Toolbar>
@@ -38,60 +29,54 @@ export default function Header({ onClick, isOpen }) {
                 alt="bookstore-icon"
                 className="w-8 mx-4 brightness-0 invert"
               />
-              <p className="text-2xl inline-block">品誠</p>
+              <p className="text-3xl inline-block">品誠</p>
             </Link>
           </Typography>
-          <Button
-            className="hover:underline hover:decoration-wavy text-base hover:decoration-yellow-500 hover:scale-110 "
-            color="inherit"
-            onClick={() => router.push("../books/")}
-            style={{
-              display: isLargeScreen ? "block" : "none",
-            }}
-          >
-            書藉
-          </Button>
-          <Button
-            className="hover:underline hover:decoration-wavy text-base hover:decoration-yellow-500 hover:scale-110 "
-            color="inherit"
-            onClick={() => router.push("../account/login")}
-            style={{
-              display: isLargeScreen ? "block" : "none",
-            }}
-          >
-            登錄
-          </Button>
-          <Button
-            className="hover:underline hover:decoration-wavy text-base hover:decoration-yellow-500 hover:scale-110 "
-            color="inherit"
-            onClick={() => router.push("../account/register")}
-            style={{
-              display: isLargeScreen ? "block" : "none",
-            }}
-          >
-            註冊
-          </Button>
-          <Button
-            className="hover:underline hover:decoration-wavy text-base hover:decoration-yellow-500 hover:scale-110 "
-            color="inherit"
-            onClick={() => router.push("../checkout/cart")}
-            style={{
-              display: isLargeScreen ? "block" : "none",
-            }}
-          >
-            購物車
-          </Button>
-          <Button
-            className="hover:underline hover:decoration-wavy text-base hover:decoration-yellow-500 hover:scale-110 "
-            color="inherit"
-            onClick={() => router.push("../checkout/orders")}
-            style={{
-              display: isLargeScreen ? "block" : "none",
-            }}
-          >
-            訂單
-          </Button>
-          <Asidebar onClick={onClick} isOpen={isOpen} />
+
+          <div className="hidden lg:flex">
+            <Button
+              className="hover:underline hover:decoration-wavy text-base hover:decoration-yellow-500 hover:scale-110 "
+              color="inherit"
+              onClick={() => router.push("../books")}
+              style={{ fontSize: "1.25rem" }}
+            >
+              書藉
+            </Button>
+            <Button
+              className="hover:underline hover:decoration-wavy text-base hover:decoration-yellow-500 hover:scale-110 "
+              color="inherit"
+              onClick={() => router.push("../login")}
+              style={{ fontSize: "1.25rem" }}
+            >
+              登錄
+            </Button>
+            <Button
+              className="hover:underline hover:decoration-wavy text-base hover:decoration-yellow-500 hover:scale-110 "
+              color="inherit"
+              onClick={() => router.push("../register")}
+              style={{ fontSize: "1.25rem" }}
+            >
+              註冊
+            </Button>
+            <Button
+              className="hover:underline hover:decoration-wavy text-base hover:decoration-yellow-500 hover:scale-110 "
+              color="inherit"
+              onClick={() => router.push("../shoppingcart")}
+              style={{ fontSize: "1.25rem" }}
+            >
+              購物車
+            </Button>
+            <Button
+              className="hover:underline hover:decoration-wavy text-base hover:decoration-yellow-500 hover:scale-110 "
+              color="inherit"
+              onClick={() => router.push("../orders")}
+              style={{ fontSize: "1.25rem" }}
+            >
+              訂單
+            </Button>
+          </div>
+
+          <Asidebar onClick={handleClick} isOpen={isOpen} />
         </Toolbar>
       </AppBar>
     </>
