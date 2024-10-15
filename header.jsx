@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Asidebar from "./asidebar";
 import React, { useState } from "react";
+import Image from "next/image";
 
 export default function Header() {
   const router = useRouter();
@@ -24,10 +25,12 @@ export default function Header() {
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link href="/" className="flex items-center w-10 no-underline">
-              <img
+              <Image
                 src="/images/icon_img/bookstoreLogov2.png"
                 alt="bookstore-icon"
                 className="w-8 mx-4 brightness-0 invert"
+                width={500}
+                height={500}
               />
               <p className="text-3xl inline-block">品誠</p>
             </Link>
@@ -73,6 +76,30 @@ export default function Header() {
               style={{ fontSize: "1.25rem" }}
             >
               訂單
+            </Button>
+            {/* <Button
+              className="hover:underline hover:decoration-wavy text-base hover:decoration-yellow-500 hover:scale-110 "
+              color="inherit"
+              onClick={() => router.push("../favourite")}
+              style={{ fontSize: "1.25rem" }}
+            >
+              收藏
+            </Button> */}
+            <Button
+              className="hover:underline hover:decoration-wavy text-base hover:decoration-yellow-500 hover:scale-110 "
+              color="inherit"
+              onClick={() => router.push("../aboutus")}
+              style={{ fontSize: "1.25rem" }}
+            >
+              關於
+            </Button>
+            <Button
+              className="hover:underline hover:decoration-wavy text-base hover:decoration-yellow-500 hover:scale-110 "
+              color="inherit"
+              onClick={() => router.push("../contactus")}
+              style={{ fontSize: "1.25rem" }}
+            >
+              聯絡我們
             </Button>
           </div>
 

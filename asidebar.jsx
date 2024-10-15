@@ -6,6 +6,8 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LockOpenRoundedIcon from "@mui/icons-material/LockOpenRounded";
 import HowToRegRoundedIcon from "@mui/icons-material/HowToRegRounded";
 import ReceiptIcon from "@mui/icons-material/Receipt";
+import CallIcon from "@mui/icons-material/Call";
+import InfoIcon from "@mui/icons-material/Info";
 import { useRouter } from "next/navigation";
 
 export default function Asidebar({ onClick, isOpen }) {
@@ -20,6 +22,7 @@ export default function Asidebar({ onClick, isOpen }) {
           borderRadius: "9999px",
           backgroundColor: isOpen ? "#fb7185" : "transparent",
           cursor: "pointer",
+          width: "10%",
         }}
         onClick={onClick}
       >
@@ -30,6 +33,7 @@ export default function Asidebar({ onClick, isOpen }) {
           style={{
             margin: "auto",
             maxWidth: "100%",
+            maxHeight: "100%",
             filter: "brightness(0) invert(1)",
           }}
         />
@@ -38,7 +42,7 @@ export default function Asidebar({ onClick, isOpen }) {
         className={`asidebar fixed z-50 top-0 left-0 h-full bg-sky-500 text-white transition-transform transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } w-full md:w-1/2 lg:w-1/4`}
-        style={{ height: "90vh", top: "10vh", border: "3px solid #fff " }}
+        style={{ height: "90vh", top: "10vh", border: "3px solid #fff" }}
       >
         <ul className="tracking-widest text-xl font-semibold ">
           <li
@@ -80,6 +84,30 @@ export default function Asidebar({ onClick, isOpen }) {
           >
             <ReceiptIcon className="text-white" />
             <span className="ml-2">訂單</span>
+          </li>
+          {/* <li
+            className="flex items-center justify-center space-x-6 hover:underline cursor-pointer h-[10vh] hover:bg-orange-500"
+            style={{ borderBottom: "3px solid #fff" }}
+            onClick={() => router.push("../favourite")}
+          >
+            <ReceiptIcon className="text-white" />
+            <span className="ml-2">收藏</span>
+          </li> */}
+          <li
+            className="flex items-center justify-center space-x-6 hover:underline cursor-pointer h-[10vh] hover:bg-orange-500"
+            style={{ borderBottom: "3px solid #fff" }}
+            onClick={() => router.push("../aboutus")}
+          >
+            <InfoIcon className="text-white" />
+            <span className="ml-2">關於</span>
+          </li>
+          <li
+            className="flex items-center justify-center space-x-6 hover:underline cursor-pointer h-[10vh] hover:bg-orange-500"
+            style={{ borderBottom: "3px solid #fff" }}
+            onClick={() => router.push("../contactus")}
+          >
+            <CallIcon className="text-white" />
+            <span className="ml-2">聯絡我們</span>
           </li>
         </ul>
       </div>
