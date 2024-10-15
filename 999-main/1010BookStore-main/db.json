@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": "3eko",
+      "username": "Wongmeow177",
+      "email": "wongwong717@mail.com",
+      "password": "123789!!meoW"
+    },
+    {
+      "id": "19oo",
+      "username": "ChanHungT",
+      "email": "hungChant0@yahoo.com",
+      "password": "myN4m3!sHnug."
+    },
+    {
+      "id": "d0b8",
+      "username": "o7zSiu",
+      "email": "mrSiuisPROJJ@mail.com",
+      "password": "123"
+    },
+    {
+      "id": "a199",
+      "username": "ERBSCHOOLuse",
+      "email": "12BBB3@mmm123.com",
+      "password": "12341234"
+    }
+  ],
+  "orders": [
+    {
+      "username": "ChanHungT",
+      "id": "inve049o2",
+      "product": {},
+      "status": "Fulfilled"
+    }
+  ]
+}
